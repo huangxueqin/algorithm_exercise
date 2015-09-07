@@ -30,36 +30,41 @@ int head = 0;
 int main(void) {
     int N, M, i, j, K;
     char X;
-    scanf("%d %d", &N, &M);
-    for(int k = 0; k < N; k++) 
+    scanf("%d %d\n", &N, &M);
+    for(int k = 0; k < N; k++) {
         scanf("%c", str+k+1);
+    }
+    //printf("%s", str+1);
+    // skip new line
+    getchar();
     build_tree(1, 1, N);
     for(int m = 0; m < M; m++) {
         scanf("%s %d", cmd_head, &cmd_num);
         switch(cmd_num) {
             case 1:
-                scanf("%d %d %c", &i, &j, &X);
+                scanf("%d %d %c\n", &i, &j, &X);
                 i = OFFSET(head, N, i);
                 j = OFFSET(head, N, j);
                 update_by_cmd1(RT, i, j, X);
                 break;
             case 2:
                 break;
-                scanf("%d %d %d", &i, &j, &K);
+                scanf("%d %d %d\n", &i, &j, &K);
                 i = OFFSET(head, N, i);
                 j = OFFSET(head, N, j);
                 update_by_cmd2(RT, i, j, K);
             case 3:
-                scanf("%d", &K);
+                scanf("%d\n", &K);
                 head = (head + K) % N;
                 break;
             case 4:
-                scanf("%d %d", &i, &j);
+                scanf("%d %d\n", &i, &j);
                 i = OFFSET(head, N, i);
                 j = OFFSET(head, N, j);
                 update_by_cmd4(RT, i, j);
                 break;
         }
+        getchar();
     }
     obtain_string(RT, str);
 
