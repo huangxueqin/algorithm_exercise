@@ -108,7 +108,7 @@ void dfs(int s, int total_grass) {
         e = e->next;
     }
 
-    if(more) {
+    if(!more) {
         max_grass = max(max_grass, total_grass);
     }
 }
@@ -138,7 +138,7 @@ int main(void) {
      *     printf("%d ", grp_grs[i]);
      * }
      * printf("\n"); */
-    printf("grp_num = %d\n", grp_num);
+    // printf("grp_num = %d\n", grp_num);
 
     construct_grouped_graph();
     
